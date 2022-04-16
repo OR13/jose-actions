@@ -6485,13 +6485,16 @@ const getInputs = () => {
   const payload = getObjectOrString(core.getInput("payload"));
   const jwk = getObjectOrString(core.getInput("jwk"));
 
+  const jws = core.getInput("jws");
+
   
   return {
     resource,
     action,
     header,
     payload,
-    jwk
+    jwk,
+    jws
   };
 };
 
