@@ -6584,7 +6584,7 @@ const util = __nccwpck_require__(2885);
 
 const verify = async ({ jws, jwk }) => {
     const v = await util.verify({ jws, jwk })
-    core.setOutput("verified_payload", v.payload);
+    core.setOutput("verified_payload", Buffer.from(v.payload).toString());
     core.setOutput("verified_header", v.protectedHeader);
 };
 
