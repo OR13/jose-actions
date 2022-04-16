@@ -1,10 +1,10 @@
 const core = require("@actions/core");
 
 
-const getObjectOrString = (arg)=>{
-  try{
+const getObjectOrString = (arg) => {
+  try {
     return JSON.parse(arg);
-  } catch() {
+  } catch(e) {
     return arg;
   }
 }
