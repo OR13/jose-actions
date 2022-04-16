@@ -1563,9 +1563,16 @@ const core = __nccwpck_require__(186);
 const getInputs = () => {
   const resource = core.getInput("resource");
   const action = core.getInput("action");
+
+  const header = core.getInput("header");
+  const payload = core.getInput("payload");
+  const jwk = core.getInput("jwk");
   return {
     resource,
     action,
+    header,
+    payload,
+    jwk
   };
 };
 
@@ -1606,10 +1613,10 @@ module.exports = { sign };
 /***/ ((module) => {
 
 
-const sign = async ({resource, action}) => {
-    let outputs = { resource, action };
+const sign = async ({header, payload, jwk}) => {
     //  todo: fill this in
-    return outputs;
+    const jws = '000'
+    core.setOutput("jws", jws);
 };
 
 module.exports = { sign };
@@ -1745,8 +1752,8 @@ async function run() {
   try {
     const inputs = getInputs();
     if (resources[inputs.resource]) {
-      const outputs = await resources[inputs.resource][inputs.action](inputs);
-      core.setOutput("response", outputs);
+      await resources[inputs.resource][inputs.action](inputs)
+      
     } else {
       console.warn(JSON.stringify(inputs, null, 2));
       throw new Error("Unsupported resource or action.");
