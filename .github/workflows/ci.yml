@@ -14,7 +14,7 @@ jobs:
 
       - name: Sign
         id: sign_jws
-        uses: or13/jose-actions@v0.0.7
+        uses: or13/jose-actions@v0.0.8
         with:
           resource: "jws"
           action: "sign"
@@ -36,7 +36,7 @@ jobs:
 
       - name: Verify
         id: verify_jws
-        uses: or13/jose-actions@v0.0.7
+        uses: or13/jose-actions@v0.0.8
         with:
           resource: "jws"
           action: "verify"
