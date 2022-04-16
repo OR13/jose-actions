@@ -1610,12 +1610,14 @@ module.exports = { sign };
 /***/ }),
 
 /***/ 750:
-/***/ ((module) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
+const core = __nccwpck_require__(186);
 
 const sign = async ({header, payload, jwk}) => {
     //  todo: fill this in
     const jws = '000'
+
     core.setOutput("jws", jws);
 };
 
