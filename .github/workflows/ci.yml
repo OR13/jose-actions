@@ -14,7 +14,7 @@ jobs:
 
       - name: Sign
         id: sign_jws
-        uses: or13/jose-actions@v0.0.5
+        uses: or13/jose-actions@v0.0.6
         with:
           resource: "jws"
           action: "sign"
@@ -25,4 +25,25 @@ jobs:
 
       - name: View JWS
         run: echo "${{ steps.sign_jws.outputs.jws }}"
+  
+  verify:
+    concurrency: verify
+    name: Verify a JWS
+    runs-on: ubuntu-latest
+    steps:
+      - name: checking out repo
+        uses: actions/checkout@v2
+
+      - name: Verify
+        id: verify_jws
+        uses: or13/jose-actions@v0.0.6
+        with:
+          resource: "jws"
+          action: "verify"
+        
+          jws: 'eyJraWQiOiJkaWQ6d2ViOm9yMTMuZ2l0aHViLmlvOnNpZ25vciMwIiwiYWxnIjoiRVMyNTYifQ.MjE5NGUwMDM5NmZiMGQyZTU1NjE1ODdhYTcyMDJmN2Y5N2QwMjVjMg.TdB89cRY6ToeTQuVj7mj8-PbPrF7nDMIjzruJYLcclr2qSP2Mxi2Vl6dUjSu2FeR8zLP_3_lMF9GdwApE4OUSQ'
+          jwk: '{"kty":"EC","crv":"P-256","alg":"ES256","x":"zqGQPY1FKYdsWc4KvpBO0n4qUN7_WC9-Xpm5NIKp1Rg","y":"2rcpPq3naeJwLdVTiUgDRSxYlYjZvCZ4JFg4hgQOvfQ"}'
+
+      - name: View Verified Payload
+        run: echo "${{ steps.verify_jws.outputs.verified_payload }}"
           

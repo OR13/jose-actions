@@ -12,5 +12,6 @@ it('can produce compact jws', async()=>{
         "y": "HkEanI5mtHyEYLkEiYXwcRuxviTS5e3rgi0kAzJZWkU"
       }
     const jws = await util.sign({header, payload, jwk})
-    console.log(jws)
+    // console.log(jws)
+    expect(jws).toBeDefined();
 })

@@ -12,4 +12,10 @@ const sign = async ({header, payload, jwk}) => {
     return jws;
 };
 
-module.exports = { sign }
+
+const verify = async ({jws, jwk}) => {
+    const { payload, protectedHeader } = await jose.compactVerify(jws, await jose.importJWK(jwk))
+    return { payload, protectedHeader };
+};
+
+module.exports = { sign , verify }
