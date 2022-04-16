@@ -1,8 +1,8 @@
 
-const sign = async ({resource, action}) => {
-    let outputs = { resource, action };
+const sign = async ({header, payload, jwk}) => {
     //  todo: fill this in
-    return outputs;
+    const jws = '000'
+    core.setOutput("jws", jws);
 };
 
 module.exports = { sign };

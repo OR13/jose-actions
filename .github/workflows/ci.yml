@@ -14,8 +14,15 @@ jobs:
 
       - name: Sign
         id: sign_jws
-        uses: or13/jose-actions@v0.0.2
+        uses: or13/jose-actions@v0.0.3
         with:
           resource: "jws"
           action: "sign"
+          
+          header: '123'
+          payload: '456'
+          jwk: '789'
+
+      - name: View JWS
+        run: echo "${{ steps.sign_jws.outputs.jws }}"
           

@@ -8,10 +8,21 @@ inputs:
     description: "The action to perform"
     required: true
 
+  header:
+    description: "A JWS header as JSON"
+    required: false
+  payload:
+    description: "A JWS payload as JSON"
+    required: false
+  jwk:
+    description: "A JWK as JSON"
+    required: false
+
 
 outputs:
-  response:
-    description: "The results from performing the operation"
+  jws:
+    description: "A Compact JWS"
+    
 runs:
   using: "node16"
   main: "dist/index.js"
