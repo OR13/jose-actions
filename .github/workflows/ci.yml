@@ -1,0 +1,21 @@
+name: CI
+
+on: [push]
+
+jobs:
+
+  sign:
+    concurrency: sign
+    name: Sign a JWS
+    runs-on: ubuntu-latest
+    steps:
+      - name: checking out repo
+        uses: actions/checkout@v2
+
+      - name: Sign
+        id: sign_jws
+        uses: or13/jose-actions@v0.0.0
+        with:
+          resource: "jws"
+          action: "sign"
+          

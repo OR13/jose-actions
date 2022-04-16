@@ -1,0 +1,29 @@
+{
+  "name": "jose-actions",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "npx ncc build index.js --license licenses.txt",
+    "postbuild": "git add -A; git commit -m ':rocket:'; git push origin master",
+    "prerelease": "npm run build",
+    "release": "npm version patch && git add ./package.json",
+    "postrelease": "git push --tags",
+    "hacky-test": " git add -A; git commit -m 'chore: test'; npm run release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OR13/jose-actions.git"
+  },
+  "author": "Orie Steele",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/OR13/jose-actions/issues"
+  },
+  "homepage": "https://github.com/OR13/jose-actions#readme",
+  "devDependencies": {
+    "@vercel/ncc": "^0.33.3",
+    "jest": "^27.5.1"
+  }
+}

@@ -1,0 +1,17 @@
+name: "Verifiable Action"
+description: "Workflow tools for Decentralized Identifiers & Verifiable Credentials"
+inputs:
+  resource:
+    description: "The resource to perform an action on"
+    required: true
+  action:
+    description: "The action to perform"
+    required: true
+
+
+outputs:
+  response:
+    description: "The results from performing the operation"
+runs:
+  using: "node16"
+  main: "dist/index.js"
