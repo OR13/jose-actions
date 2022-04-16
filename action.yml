@@ -17,6 +17,9 @@ inputs:
   jwk:
     description: "A JWK as JSON"
     required: false
+  jws:
+    description: "A Compact JWS"
+    required: false
 
 
 outputs:
