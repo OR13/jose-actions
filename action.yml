@@ -1,5 +1,5 @@
-name: "Verifiable Action"
-description: "Workflow tools for Decentralized Identifiers & Verifiable Credentials"
+name: "JOSE Actions"
+description: "Javascript Object Signing and Encryption (JOSE) with GitHub Actions."
 inputs:
   resource:
     description: "The resource to perform an action on"
