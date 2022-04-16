@@ -6523,8 +6523,9 @@ module.exports = { jws };
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const { sign } = __nccwpck_require__(750);
+const { verify } = __nccwpck_require__(2976);
 
-module.exports = { sign };
+module.exports = { sign, verify };
 
 /***/ }),
 
@@ -6561,7 +6562,30 @@ const sign = async ({header, payload, jwk}) => {
     return jws;
 };
 
-module.exports = { sign }
+
+const verify = async ({jws, jwk}) => {
+    const { payload, protectedHeader } = await jose.compactVerify(jws, await jose.importJWK(jwk))
+    return { payload, protectedHeader };
+};
+
+module.exports = { sign , verify }
+
+/***/ }),
+
+/***/ 2976:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+
+const core = __nccwpck_require__(2186);
+const util = __nccwpck_require__(2885);
+
+const verify = async ({ jws, jwk }) => {
+    const v = await util.verify({ jws, jwk })
+    core.setOutput("verified_payload", v.payload);
+    core.setOutput("verified_header", v.protectedHeader);
+};
+
+module.exports = { verify };
 
 /***/ }),
 
