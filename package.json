@@ -27,6 +27,7 @@
     "jest": "^27.5.1"
   },
   "dependencies": {
-    "@actions/core": "^1.6.0"
+    "@actions/core": "^1.6.0",
+    "jose": "^4.6.1"
   }
 }

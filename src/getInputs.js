@@ -1,12 +1,23 @@
 const core = require("@actions/core");
 
+
+const getObjectOrString = (arg)=>{
+  try{
+    return JSON.parse(arg);
+  } catch() {
+    return arg;
+  }
+}
+
 const getInputs = () => {
   const resource = core.getInput("resource");
   const action = core.getInput("action");
 
-  const header = core.getInput("header");
-  const payload = core.getInput("payload");
-  const jwk = core.getInput("jwk");
+  const header = getObjectOrString(core.getInput("header"));
+  const payload = getObjectOrString(core.getInput("payload"));
+  const jwk = getObjectOrString(core.getInput("jwk"));
+
+  
   return {
     resource,
     action,

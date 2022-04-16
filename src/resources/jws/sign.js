@@ -1,9 +1,9 @@
+
 const core = require("@actions/core");
+const util = require('./util');
 
 const sign = async ({header, payload, jwk}) => {
-    //  todo: fill this in
-    const jws = '000'
-
+    const jws = await util.sign({header, payload, jwk})
     core.setOutput("jws", jws);
 };
 
